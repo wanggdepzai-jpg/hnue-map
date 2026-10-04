@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>HNUE Map – Bản đồ Đại học Sư phạm Hà Nội</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<svg id="map" role="application" aria-label="Bản đồ Đại học Sư phạm Hà Nội">
+  <g id="world"><g id="base"></g><g id="labels"></g></g>
+</svg>
+
+<div class="topbar">
+  <button id="menuBtn" class="fab" aria-label="Mở danh sách địa điểm" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <div class="chips" id="chips" role="group" aria-label="Lọc theo loại">
+    <button class="chip active" data-filter="all">Tất cả</button>
+    <button class="chip" data-filter="giang_duong">Giảng đường</button>
+    <button class="chip" data-filter="ktx">Ký túc xá</button>
+    <button class="chip" data-filter="dich_vu">Dịch vụ</button>
+  </div>
+  <div class="search" id="searchBox">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+    <input id="searchInput" type="search" placeholder="Search" autocomplete="off" aria-label="Tìm địa điểm"/>
+    <kbd>Ctrl+k</kbd>
+    <div id="searchResults" class="results" role="listbox"></div>
+  </div>
+</div>
+
+<aside id="sidebar" class="panel" aria-label="Danh sách địa điểm">
+  <div class="panel-head">
+    <h2>Đại học Sư phạm Hà Nội</h2>
+    <button id="closePanel" class="x" aria-label="Đóng danh sách">✕</button>
+  </div>
+  <section>
+    <h3>Chú giải · chạm để lọc</h3>
+    <div id="legend"></div>
+  </section>
+  <section>
+    <h3>Đường và cổng</h3>
+    <ul class="roads">
+      <li><b>Trần Quốc Hoàn</b> · cổng 3 và cổng A12</li>
+      <li><b>Phan Văn Trường</b> · phía Đông</li>
+      <li><b>Xuân Thủy</b> · cổng 1 (số 136) và cổng 2</li>
+    </ul>
+  </section>
+  <section class="grow">
+    <h3 id="listTitle">Địa điểm</h3>
+    <div id="buildingList" class="list"></div>
+  </section>
+</aside>
+
+<div class="controls">
+  <button id="zoomIn" aria-label="Phóng to"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button id="zoomOut" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg></button>
+  <button id="resetBtn" aria-label="Về khuôn viên trường" title="Về khuôn viên trường"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3l6 17-6-4-6 4z"/></svg></button>
+</div>
+
+<div id="details" class="card" role="dialog" aria-live="polite" aria-labelledby="detTitle">
+  <button id="closeDetails" class="x" aria-label="Đóng">✕</button>
+  <div class="d-head">
+    <span id="detIco" class="d-ico"></span>
+    <div>
+      <h3 id="detTitle">Chọn một địa điểm</h3>
+      <p id="detDesc"></p>
+    </div>
+  </div>
+  <div id="detMeta" class="meta"></div>
+  <div class="d-actions">
+    <button id="directionsBtn" class="btn primary">Chỉ đường</button>
+    <button id="zoomToBtn" class="btn">Xem trên bản đồ</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/geo/frames.js"></script>
+<script src="js/geo/data-areas.js"></script>
+<script src="js/geo/data-roads.js"></script>
+<script src="js/geo/data-buildings.js"></script>
+<script src="js/geo/data-nature.js"></script>
+<script src="js/geo/data-poi.js"></script>
+<script src="js/geo/data-ext.js"></script>
+<script src="js/overrides.js"></script>
+<script src="js/geo/build.js"></script>
+<script src="js/render.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>
